@@ -33,9 +33,9 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a15
 
 # Enable various prefetch optimizations
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_EXTRA_CFLAGS := -mtune=cortex-a15 -mcpu=cortex-a15
+TARGET_EXTRA_CFLAGS += $(call cc-option,-march=armv7-a -mtune=cortex-a15)
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mcpu=cortex-a15 -mtune=cortex-a15 -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mcpu=cortex-a15 -mtune=cortex-a15 -mfloat-abi=softfp
 COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
 
 TARGET_KERNEL_SOURCE = kernel/samsung/manta
