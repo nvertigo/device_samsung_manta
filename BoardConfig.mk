@@ -34,6 +34,9 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_ARCH_VARIANT_CPU := cortex-a15
 
 # Enable various prefetch optimizations
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_EXTRA_CFLAGS := -mtune=cortex-a15 -mcpu=cortex-a15
 COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
 
 TARGET_KERNEL_SOURCE = kernel/samsung/manta
@@ -89,5 +92,6 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_RECOVERY_UI_LIB := librecovery_ui_manta
 TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_manta
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/manta
+BOARD_HAS_NO_SELECT_BUTTON := true
 
 ENABLE_WEBGL := true
